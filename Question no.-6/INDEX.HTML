@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- TOP HEADER WITH BACKGROUND IMAGE -->
+    <header class="top-banner">
+        <h1>Student Dashboard</h1>
+        <p>Welcome back, Student!</p>
+    </header>
+
+    <!-- NAVIGATION BUTTONS TO SHOW/HIDE SECTIONS -->
+    <div class="controls">
+        <button onclick="showSection('profile')">Profile</button>
+        <button onclick="showSection('courses')">Courses</button>
+        <button onclick="showSection('results')">Results</button>
+    </div>
+
+    <!-- DASHBOARD SECTIONS -->
+    <section id="profile" class="section visible">
+        <h2>Your Profile</h2>
+        <p>Name: John Doe</p>
+        <p>Class: 10th Grade</p>
+        <p>Roll No: 45</p>
+    </section>
+
+    <section id="courses" class="section hidden">
+        <h2>Your Courses</h2>
+
+        <div class="card-grid">
+
+            <div class="card math-card">
+                <h3>Mathematics</h3>
+                <p>Algebra, Geometry, Trigonometry</p>
+            </div>
+
+            <div class="card sci-card">
+                <h3>Science</h3>
+                <p>Physics, Chemistry, Biology</p>
+            </div>
+
+            <div class="card eng-card">
+                <h3>English</h3>
+                <p>Grammar, Literature, Writing</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="results" class="section hidden">
+        <h2>Your Results</h2>
+        <p>Math: 88%</p>
+        <p>Science: 92%</p>
+        <p>English: 85%</p>
+    </section>
+
+    <!-- SMALL SCRIPT TO DISPLAY SECTIONS -->
+    <script>
+        function showSection(id) {
+            document.querySelectorAll(".section").forEach(sec => {
+                sec.classList.add("hidden");
+                sec.classList.remove("visible");
+            });
+
+            document.getElementById(id).classList.add("visible");
+            document.getElementById(id).classList.remove("hidden");
+        }
+    </script>
+
+</body>
+</html>

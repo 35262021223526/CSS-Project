@@ -1,0 +1,95 @@
+/* style.css — Resume Design */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #eef2f3;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.15);
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  color: #2c3e50;
+  margin-bottom: 5px;
+}
+
+header p {
+  color: #555;
+  font-size: 15px;
+  margin: 3px 0;
+}
+
+/* Social icons */
+.social-icons {
+  margin-top: 10px;
+}
+
+.social-icons a {
+  color: #2c3e50;
+  font-size: 22px;
+  margin: 0 8px;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  color: #0b6efd;
+}
+
+/* Sections */
+section {
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #2c3e50;
+  border-bottom: 2px solid #0b6efd;
+  display: inline-block;
+  padding-bottom: 4px;
+  margin-bottom: 10px;
+}
+
+ul {
+  line-height: 1.8;
+  padding-left: 20px;
+}
+
+p {
+  line-height: 1.6;
+}
+
+/* Declaration */
+.sign {
+  margin-top: 25px;
+  text-align: left;
+}
+
+.sign span {
+  float: right;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .container {
+    padding: 15px;
+  }
+  header h1 {
+    font-size: 22px;
+  }
+}

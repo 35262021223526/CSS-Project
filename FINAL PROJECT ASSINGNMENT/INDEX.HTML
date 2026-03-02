@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Newstoday - News & Media</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* ====== RESET ====== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f5f5f5;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* ====== NAVBAR ====== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 7%;
+            background: #111827;
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #f97316;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 18px;
+        }
+
+        .nav-links a {
+            position: relative;
+            font-size: 0.95rem;
+            padding-bottom: 3px;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: #f97316;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid #f97316;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-login {
+            background: transparent;
+            color: #f97316;
+        }
+
+        .btn-login:hover {
+            background: #f97316;
+            color: #111827;
+        }
+
+        .btn-signup {
+            background: #f97316;
+            color: #111827;
+        }
+
+        .btn-signup:hover {
+            background: #fed7aa;
+        }
+
+        /* ====== HERO / HOME ====== */
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+            gap: 30px;
+            padding: 40px 7%;
+            background: linear-gradient(135deg, #111827, #020617);
+            color: #f9fafb;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-content h1 span {
+            color: #f97316;
+        }
+
+        .hero-content p {
+            margin-bottom: 18px;
+            max-width: 480px;
+            color: #e5e7eb;
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .tag {
+            padding: 5px 12px;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            border: 1px solid rgba(249,115,22,0.6);
+            background: rgba(15,23,42,0.6);
+        }
+
+        .cta-primary {
+            display: inline-block;
+            padding: 10px 22px;
+            border-radius: 999px;
+            background: #f97316;
+            color: #111827;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .cta-primary:hover {
+            background: #fed7aa;
+        }
+
+        .hero-side {
+            background: #020617;
+            border-radius: 16px;
+            padding: 18px 18px 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            border: 1px solid rgba(148,163,184,0.3);
+        }
+
+        .hero-side h3 {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .headline-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-height: 260px;
+            overflow-y: auto;
+        }
+
+        .headline {
+            padding-bottom: 10px;
+            border-bottom: 1px dashed rgba(148,163,184,0.4);
+        }
+
+        .headline small {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: #f97316;
+        }
+
+        .headline p {
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        /* ====== GENERIC SECTIONS ====== */
+        section {
+            padding: 50px 7%;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            margin-bottom: 5px;
+            color: #111827;
+        }
+
+        .section-subtitle {
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            color: #6b7280;
+        }
+
+        /* ====== ABOUT ====== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
+            gap: 30px;
+        }
+
+        .about-text p {
+            margin-bottom: 10px;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
+            gap: 15px;
+            margin-top: 12px;
+        }
+
+        .highlight-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .highlight-card h4 {
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .highlight-card span {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .about-image-box {
+            background: #111827;
+            border-radius: 16px;
+            padding: 18px;
+            color: #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .about-image-box strong {
+            color: #f97316;
+        }
+
+        /* ====== PORTFOLIO / FEATURED WORKS ====== */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+            gap: 20px;
+        }
+
+        .portfolio-card {
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.07);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+        }
+
+        .portfolio-image {
+            height: 150px;
+            background: linear-gradient(135deg,#0f172a,#1f2937);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #f9fafb;
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        .portfolio-content {
+            padding: 14px 14px 16px;
+        }
+
+        .portfolio-content h4 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .portfolio-meta {
+            font-size: 0.78rem;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+
+        .portfolio-desc {
+            font-size: 0.85rem;
+            color: #4b5563;
+        }
+
+        /* ====== GALLERY ====== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
+            gap: 12px;
+        }
+
+        .gallery-item {
+            border-radius: 12px;
+            overflow: hidden;
+            background: #111827;
+            height: 140px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .gallery-item::before {
+            content: "News Shot";
+            position: absolute;
+            bottom: 8px;
+            left: 10px;
+            padding: 3px 8px;
+            border-radius: 999px;
+            font-size: 0.7rem;
+            background: rgba(0,0,0,0.5);
+            color: #f9fafb;
+        }
+
+        .gallery-item:nth-child(odd) {
+            background: linear-gradient(135deg,#f97316,#fb923c);
+        }
+
+        .gallery-item:nth-child(even) {
+            background: linear-gradient(135deg,#0ea5e9,#22d3ee);
+        }
+
+        /* ====== CONTACT ====== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
+            gap: 30px;
+        }
+
+        form {
+            background: #fff;
+            border-radius: 14px;
+            padding: 18px;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.07);
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 8px 10px;
+            border-radius: 8px;
+            border: 1px solid #d1d5db;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #f97316;
+            box-shadow: 0 0 0 1px rgba(249,115,22,0.3);
+        }
+
+        .btn-submit {
+            padding: 8px 18px;
+            border-radius: 999px;
+            background: #111827;
+            color: #f9fafb;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: #f97316;
+            color: #111827;
+        }
+
+        .contact-info {
+            font-size: 0.9rem;
+            color: #4b5563;
+        }
+
+        .contact-info p {
+            margin-bottom: 8px;
+        }
+
+        .contact-info strong {
+            color: #111827;
+        }
+
+        /* ====== AUTH SECTION (LOGIN & SIGNUP) ====== */
+        #auth {
+            background: #0b1120;
+            color: #f9fafb;
+        }
+
+        .auth-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+            gap: 20px;
+        }
+
+        .auth-card {
+            background: rgba(15,23,42,0.85);
+            border-radius: 14px;
+            padding: 18px;
+            border: 1px solid rgba(148,163,184,0.3);
+        }
+
+        .auth-card h3 {
+            margin-bottom: 6px;
+            font-size: 1.1rem;
+        }
+
+        .auth-card p {
+            font-size: 0.8rem;
+            color: #9ca3af;
+            margin-bottom: 14px;
+        }
+
+        .auth-card .form-group label {
+            color: #e5e7eb;
+        }
+
+        .auth-card .form-group input {
+            background: #020617;
+            border: 1px solid #4b5563;
+            color: #e5e7eb;
+        }
+
+        .auth-card .form-group input:focus {
+            border-color: #f97316;
+        }
+
+        .auth-note {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            margin-top: 6px;
+        }
+
+        /* ====== FOOTER ====== */
+        footer {
+            padding: 16px 7%;
+            background: #020617;
+            color: #9ca3af;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        /* ====== RESPONSIVE ====== */
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .navbar {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                padding-top: 24px;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ========== HEADER / NAVBAR ========== -->
+<header>
+    <nav class="navbar">
+        <div class="logo">News<span>today</span></div>
+
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+            <a href="#auth">Login</a>
+            <a href="#auth">Signup</a>
+        </div>
+
+        <div class="auth-buttons">
+            <a href="#auth" class="btn btn-login">Login</a>
+            <a href="#auth" class="btn btn-signup">Signup</a>
+        </div>
+    </nav>
+</header>
+
+<!-- ========== HOME / HERO ========== -->
+<section id="home" class="hero">
+    <div class="hero-content">
+        <h1>Live <span>News</span>, Trusted Stories, Anytime.</h1>
+        <p>
+            Newstoday brings you breaking news, deep analysis, and powerful visual
+            stories from around the world – verified, curated, and delivered in real-time.
+        </p>
+
+        <div class="hero-tags">
+            <div class="tag">Breaking News</div>
+            <div class="tag">Politics</div>
+            <div class="tag">Business</div>
+            <div class="tag">Sports</div>
+            <div class="tag">Entertainment</div>
+        </div>
+
+        <a href="#portfolio" class="cta-primary">Explore Top Stories</a>
+    </div>
+
+    <aside class="hero-side">
+        <h3>Top Headlines</h3>
+        <div class="headline-list">
+            <div class="headline">
+                <small>Politics • 3 min read</small>
+                <p>Global leaders meet for urgent climate summit to discuss next decade plan.</p>
+            </div>
+            <div class="headline">
+                <small>Business • 5 min read</small>
+                <p>Tech stocks rally as markets react to innovation in AI and automation.</p>
+            </div>
+            <div class="headline">
+                <small>Sports • 2 min read</small>
+                <p>Underdog team stuns defending champions in last-minute thriller.</p>
+            </div>
+            <div class="headline">
+                <small>World • 4 min read</small>
+                <p>Historic peace agreement signed after years of negotiation and conflict.</p>
+            </div>
+        </div>
+    </aside>
+</section>
+
+<!-- ========== ABOUT SECTION ========== -->
+<section id="about">
+    <h2 class="section-title">About Newstoday</h2>
+    <p class="section-subtitle">A modern news & media platform built for the digital age.</p>
+
+    <div class="about-grid">
+        <div class="about-text">
+            <p>
+                Newstoday is a digital-first newsroom focused on accuracy, speed,
+                and meaningful storytelling. We combine experienced journalists
+                with modern technology to deliver news that matters.
+            </p>
+            <p>
+                From local updates to global events, our mission is to keep you
+                informed, engaged, and empowered to understand the world around you.
+            </p>
+
+            <div class="about-highlights">
+                <div class="highlight-card">
+                    <h4>24/7 Coverage</h4>
+                    <span>Updates around the clock from trusted sources.</span>
+                </div>
+                <div class="highlight-card">
+                    <h4>Global Network</h4>
+                    <span>Reporters and contributors across continents.</span>
+                </div>
+                <div class="highlight-card">
+                    <h4>Fact Checked</h4>
+                    <span>Multiple layers of verification and review.</span>
+                </div>
+                <div class="highlight-card">
+                    <h4>Digital First</h4>
+                    <span>Web, mobile, and social optimized content.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-image-box">
+            <div>
+                <h3>Why readers trust us</h3>
+                <p>
+                    Our editorial team follows a strict code of ethics, transparency in
+                    sources, and clear separation between news and opinion.
+                </p>
+            </div>
+            <div>
+                <p><strong>100K+</strong> daily readers</p>
+                <p><strong>50+</strong> expert journalists</p>
+                <p><strong>200+</strong> cities covered</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== PORTFOLIO / FEATURED STORIES ========== -->
+<section id="portfolio">
+    <h2 class="section-title">Our Portfolio</h2>
+    <p class="section-subtitle">
+        Featured news projects, special reports, and multimedia stories produced by Newstoday.
+    </p>
+
+    <div class="portfolio-grid">
+        <article class="portfolio-card">
+            <div class="portfolio-image">ELECTION 2025</div>
+            <div class="portfolio-content">
+                <h4>Election 2025: Interactive Results Dashboard</h4>
+                <div class="portfolio-meta">Data Journalism • Web Special</div>
+                <p class="portfolio-desc">
+                    Real-time vote counting, interactive maps, and analysis of national
+                    and regional elections on a single live platform.
+                </p>
+            </div>
+        </article>
+
+        <article class="portfolio-card">
+            <div class="portfolio-image">CLIMATE</div>
+            <div class="portfolio-content">
+                <h4>Climate Change: Stories from the Frontline</h4>
+                <div class="portfolio-meta">Documentary • Photo Essay</div>
+                <p class="portfolio-desc">
+                    An in-depth multimedia project highlighting communities already
+                    impacted by rising seas and changing weather.
+                </p>
+            </div>
+        </article>
+
+        <article class="portfolio-card">
+            <div class="portfolio-image">ECONOMY</div>
+            <div class="portfolio-content">
+                <h4>Inside the Global Economy Reset</h4>
+                <div class="portfolio-meta">Explainer Series • Infographics</div>
+                <p class="portfolio-desc">
+                    A series breaking down inflation, jobs, and markets in simple,
+                    easy-to-understand visuals and explainers.
+                </p>
+            </div>
+        </article>
+
+        <article class="portfolio-card">
+            <div class="portfolio-image">SPORTS</div>
+            <div class="portfolio-content">
+                <h4>Legends of the Game: Sports Special</h4>
+                <div class="portfolio-meta">Video • Interviews</div>
+                <p class="portfolio-desc">
+                    Exclusive interviews and behind-the-scenes moments with top
+                    athletes across cricket, football, and more.
+                </p>
+            </div>
+        </article>
+    </div>
+</section>
+
+<!-- ========== GALLERY ========== -->
+<section id="gallery">
+    <h2 class="section-title">Gallery</h2>
+    <p class="section-subtitle">Snapshots from stories, events, and on-ground reporting.</p>
+
+    <div class="gallery-grid">
+        <div class="gallery-item"></div>
+        <div class="gallery-item"></div>
+        <div class="gallery-item"></div>
+        <div class="gallery-item"></div>
+        <div class="gallery-item"></div>
+        <div class="gallery-item"></div>
+    </div>
+</section>
+
+<!-- ========== CONTACT SECTION ========== -->
+<section id="contact">
+    <h2 class="section-title">Contact Us</h2>
+    <p class="section-subtitle">Reach out for news tips, collaborations, or media enquiries.</p>
+
+    <div class="contact-grid">
+        <form>
+            <div class="form-group">
+                <label for="name">Full Name*</label>
+                <input id="name" type="text" placeholder="Enter your name">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address*</label>
+                <input id="email" type="email" placeholder="you@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="topic">Topic</label>
+                <select id="topic">
+                    <option>News Tip</option>
+                    <option>Business / Advertising</option>
+                    <option>Partnership</option>
+                    <option>Feedback</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message*</label>
+                <textarea id="message" placeholder="Write your message here"></textarea>
+            </div>
+
+            <button type="button" class="btn-submit">Send Message</button>
+        </form>
+
+        <div class="contact-info">
+            <p><strong>Newsroom:</strong> editorial@newstoday.com</p>
+            <p><strong>Business:</strong> ads@newstoday.com</p>
+            <p><strong>Phone:</strong> +91-98765-43210</p>
+            <p><strong>Address:</strong> Newstoday Media House, City Center, India</p>
+
+            <p style="margin-top: 16px;">
+                You can also follow us on our social channels for live updates and behind-the-scenes coverage.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== LOGIN & SIGNUP SECTION ========== -->
+<section id="auth">
+    <h2 class="section-title" style="color:#f9fafb;">Login & Signup</h2>
+    <p class="section-subtitle" style="color:#9ca3af;">
+        Access your personalized Newstoday experience by logging in or creating a free account.
+    </p>
+
+    <div class="auth-wrapper">
+        <!-- Login Card -->
+        <div class="auth-card">
+            <h3>Login</h3>
+            <p>Welcome back! Sign in to continue reading your saved stories and newsletters.</p>
+
+            <div class="form-group">
+                <label for="login-email">Email</label>
+                <input id="login-email" type="email" placeholder="you@example.com">
+            </div>
+            <div class="form-group">
+                <label for="login-password">Password</label>
+                <input id="login-password" type="password" placeholder="Enter your password">
+            </div>
+            <button type="button" class="btn-submit">Login</button>
+            <p class="auth-note">Forgot your password? Reset options will be available in a real app.</p>
+        </div>
+
+        <!-- Signup Card -->
+        <div class="auth-card">
+            <h3>Signup</h3>
+            <p>Create a free account to follow topics, save articles, and receive custom alerts.</p>
+
+            <div class="form-group">
+                <label for="signup-name">Full Name</label>
+                <input id="signup-name" type="text" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label for="signup-email">Email</label>
+                <input id="signup-email" type="email" placeholder="you@example.com">
+            </div>
+            <div class="form-group">
+                <label for="signup-password">Password</label>
+                <input id="signup-password" type="password" placeholder="Create a strong password">
+            </div>
+            <button type="button" class="btn-submit">Create Account</button>
+            <p class="auth-note">By signing up, you agree to our terms of use and privacy policy.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+    &copy; 2025 Newstoday News & Media. All rights reserved.
+</footer>
+
+</body>
+</html>

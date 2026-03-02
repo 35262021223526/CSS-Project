@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+}
+@media (max-width:600px) {
+  .grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="grid">
+  <div>Project 1</div>
+  <div>Project 2</div>
+  <div>Project 3</div>
+</div>
+
+</body>
+</html>

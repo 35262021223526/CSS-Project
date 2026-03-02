@@ -1,0 +1,94 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    margin: 0;
+    background: #f7f3e9;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ======================================
+   Sticky Header
+====================================== */
+.sticky-header {
+    position: sticky;
+    top: 0;
+    background: #ffdd57;
+    padding: 15px;
+    text-align: center;
+    z-index: 10; /* On top of all notes */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.sticky-header h1 {
+    margin: 0;
+    font-family: "Permanent Marker", cursive;
+    font-size: 2rem;
+}
+
+/* ======================================
+   Board (Relative Positioning)
+====================================== */
+.board {
+    position: relative;
+    height: 800px;
+    margin-top: 40px;
+}
+
+/* ======================================
+   Sticky Notes
+====================================== */
+.note {
+    width: 200px;
+    padding: 15px;
+    border-radius: 10px;
+    position: absolute;    /* Key for free placement */
+    font-family: "Permanent Marker", cursive;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    transform: rotate(-2deg);
+    transition: transform 0.2s;
+}
+
+/* Hover Lift */
+.note:hover {
+    transform: scale(1.05);
+}
+
+/* Individual Notes with Colors + Positions + Z-index */
+.note1 {
+    background: #ff9aa2;
+    top: 40px;
+    left: 60px;
+    z-index: 1;
+}
+
+.note2 {
+    background: #ffdac1;
+    top: 160px;
+    left: 260px;
+    z-index: 3;  /* On top of others */
+}
+
+.note3 {
+    background: #e2f0cb;
+    top: 320px;
+    left: 100px;
+    z-index: 2;
+}
+
+.note4 {
+    background: #b5ead7;
+    top: 480px;
+    left: 330px;
+    z-index: 1;
+}
+
+.note h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+.note p {
+    margin-top: 8px;
+    font-size: 0.95rem;
+}

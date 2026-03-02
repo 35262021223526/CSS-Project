@@ -1,0 +1,114 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background: #f6f6f6;
+}
+
+/* ================= HERO SECTION ================= */
+.hero {
+    background: linear-gradient(135deg, #ff6a00, #ee0979);
+    color: white;
+    text-align: center;
+    padding: 120px 20px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 3px 3px 8px rgba(0,0,0,0.3);
+}
+
+.hero p {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    opacity: 0.9;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+}
+
+.cta-btn {
+    margin-top: 25px;
+    padding: 12px 35px;
+    font-size: 1rem;
+    background: white;
+    color: #ee0979;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.cta-btn:hover {
+    background: #ffe6f1;
+    transform: scale(1.05);
+}
+
+/* ================= ABOUT SECTION ================= */
+.about {
+    padding: 60px 20px;
+    text-align: center;
+    background: #ffffff;
+}
+
+.about h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #444;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.about p {
+    font-size: 1rem;
+    max-width: 700px;
+    margin: auto;
+    color: #555;
+}
+
+/* ================= FEATURES SECTION ================= */
+.features {
+    padding: 70px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    color: white;
+}
+
+.features h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.feature-box {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(4px);
+    margin: 20px auto;
+    padding: 25px;
+    width: 320px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.feature-box h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.feature-box p {
+    font-size: 0.95rem;
+}

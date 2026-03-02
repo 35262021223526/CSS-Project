@@ -1,0 +1,19 @@
+nav {
+  display:flex;
+  gap:20px;
+  background:black;
+  padding:10px;
+}
+
+nav a {
+  color:white;
+  text-decoration:none;
+}
+
+.card {
+  width:250px;
+  padding:20px;
+  margin:50px auto;
+  text-align:center;
+  box-shadow:0 0 10px gray;
+}

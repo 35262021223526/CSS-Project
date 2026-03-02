@@ -1,0 +1,81 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    margin: 0;
+    padding: 40px;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    background: #f4f4f4;
+}
+
+.title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+/* ================= BUTTONS ================= */
+.button-container {
+    margin-bottom: 50px;
+}
+
+.btn {
+    padding: 12px 30px;
+    margin: 12px;
+    border: none;
+    border-radius: 30px;
+    background: #007bff;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s;
+}
+
+/* Button 1: Basic Hover Scale */
+.btn1:hover {
+    transform: scale(1.1);
+}
+
+/* Button 2: Glow Effect */
+.btn2 {
+    background: #9b5de5;
+}
+.btn2:hover {
+    box-shadow: 0 0 18px rgba(155, 93, 229, 0.8);
+    transform: scale(1.05);
+}
+
+/* Button 3: Pop & Fade */
+.btn3 {
+    background: #ff6b6b;
+}
+.btn3:hover {
+    transform: scale(1.15);
+    opacity: 0.9;
+}
+
+/* ================= LOADER ================= */
+.loader-section {
+    margin-top: 40px;
+}
+
+.loader {
+    width: 60px;
+    height: 60px;
+    border: 6px solid #ddd;
+    border-top-color: #007bff;
+    border-radius: 50%;
+
+    animation: spin 1s linear infinite;
+}
+
+/* Spin Animation */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

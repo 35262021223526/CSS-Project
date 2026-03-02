@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Array Input and Display</title>
+</head>
+<body>
+
+<h3>Array Input and Display using JavaScript</h3>
+<button onclick="takeInput()">Enter 5 Values</button>
+
+<p id="output"></p>
+
+<script>
+function takeInput() {
+    let arr = [];
+
+    for (let i = 0; i < 5; i++) {
+        let value = prompt("Enter value " + (i + 1) + ":");
+        arr.push(value);
+    }
+
+    document.getElementById("output").innerHTML =
+        "The elements of the array are: " + arr.join(", ");
+}
+</script>
+
+</body>
+</html>

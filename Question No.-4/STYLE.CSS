@@ -1,0 +1,113 @@
+/* Simple reset + font */
+* { box-sizing: border-box; }
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  margin: 32px;
+  background: #f7f7fb;
+  color: #111;
+}
+
+/* Layout */
+.container {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: center;
+}
+
+.flag-wrap {
+  text-align: center;
+  width: 380px;
+}
+
+/* Generic flag container */
+.flag {
+  width: 360px;        /* base width */
+  height: 240px;       /* 3:2 ratio (common for flags) */
+  border-radius: 6px;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ----------------------
+   Flag: France
+   ---------------------- */
+.flag.france {
+  /* three vertical stripes: blue | white | red */
+  background:
+    linear-gradient(to right,
+      #0055A4 0 33.333%,
+      #ffffff 33.333% 66.666%,
+      #EF4135 66.666% 100%);
+  /* optional crisp edges */
+  background-size: 100% 100%;
+}
+
+/* ----------------------
+   Flag: India
+   ---------------------- */
+/* saffron | white | green horizontal bands */
+.flag.india {
+  background:
+    linear-gradient(to bottom,
+      #FF9933 0 33.333%,
+      #ffffff 33.333% 66.666%,
+      #138808 66.666% 100%);
+}
+
+/* Ashoka Chakra in the center of the white band (pure CSS) */
+/* We create a conic-gradient for many thin spokes, then overlay a ring */
+.chakra {
+  --size: 72px;              /* change to scale the wheel */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  display: block;
+
+  /* spokes: 24 spokes => each 15deg. We draw tiny navy lines, rest transparent */
+  background:
+    /* thin spokes using repeating conic gradient: small navy slice then transparent remainder */
+    conic-gradient(#054a91 0deg 1.2deg, transparent 1.2deg 15deg);
+  /* slightly mask to give a white background inside wheel (so spokes sit on white) */
+  box-shadow: 0 0 0 4px rgba(255,255,255,1) inset;
+}
+
+/* the outer ring — use a pseudo-element for the circular ring */
+.chakra::after {
+  content: "";
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  /* ring thickness */
+  box-shadow: 0 0 0 6px #054a91;
+  /* center smaller disc to create hub (navy) */
+  background: radial-gradient(circle at center, #054a91 0 14%, transparent 15%);
+  pointer-events: none;
+}
+
+/* Small adjustment: ensure chakra sits visually on the white stripe only */
+.flag.india .chakra {
+  /* place exactly in the vertical center (white band is middle third) */
+  top: 50%;
+}
+
+/* captions */
+figcaption {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #333d47;
+}
+
+/* responsive scaling: shrink flags on small screens */
+@media (max-width: 420px) {
+  .flag { width: 280px; height: 186px; }
+  .flag-wrap { width: 280px; }
+  .chakra { --size: 56px; }
+}
