@@ -1,0 +1,122 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #74ebd5, #9face6);
+    height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #2c3e50;
+    padding: 15px 40px;
+}
+
+.logo {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+/* Hover underline animation */
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #00cec9;
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Card */
+.card {
+    width: 300px;
+    background: white;
+    margin: 80px auto;
+    padding: 30px;
+    text-align: center;
+    border-radius: 15px;
+
+    /* Box Model */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Profile Image */
+.profile-img {
+    width: 120px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+/* Text */
+.title {
+    color: gray;
+    margin: 5px 0 10px;
+}
+
+/* Buttons */
+.buttons {
+    margin-top: 20px;
+}
+
+/* Gradient Button */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    margin: 5px;
+    cursor: pointer;
+
+    background: linear-gradient(45deg, #6c5ce7, #00cec9);
+    color: white;
+
+    transition: 0.3s;
+}
+
+/* Hover Effects */
+.btn:hover {
+    transform: scale(1.1);
+    opacity: 0.9;
+}
+
+/* Outline Button */
+.btn-outline {
+    background: transparent;
+    border: 2px solid #6c5ce7;
+    color: #6c5ce7;
+}
+
+.btn-outline:hover {
+    background: #6c5ce7;
+    color: white;
+}
