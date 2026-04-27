@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Registration</title>
+</head>
+
+<body style="font-family: Arial; background-color:#f4f4f4;">
+
+    <!-- Header -->
+    <div style="text-align:center; background-color:#2196F3; color:white; padding:20px;">
+        <h1>Tech Conference 2026</h1>
+        <p>Register Now for an Exciting Event!</p>
+        <a href="#schedule" style="color:yellow;">View Event Schedule ↓</a>
+    </div>
+
+    <!-- Registration Form -->
+    <div style="width:400px; margin:30px auto; background:white; padding:20px; border-radius:10px;">
+
+        <h2>Registration Form</h2>
+
+        <form>
+
+            <!-- Name -->
+            <label for="name">Full Name:</label><br>
+            <input type="text" id="name" name="name" required style="width:100%; padding:8px; margin:8px 0;"><br>
+
+            <!-- Email -->
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required style="width:100%; padding:8px; margin:8px 0;"><br>
+
+            <!-- Event Date -->
+            <label for="date">Event Date:</label><br>
+            <input type="date" id="date" name="date" required style="width:100%; padding:8px; margin:8px 0;"><br>
+
+            <!-- Session Selection -->
+            <p><strong>Select Session:</strong></p>
+            <input type="radio" id="morning" name="session" value="morning" required>
+            <label for="morning">Morning Session</label><br>
+
+            <input type="radio" id="evening" name="session" value="evening">
+            <label for="evening">Evening Session</label><br><br>
+
+            <!-- Add-ons -->
+            <p><strong>Add-ons:</strong></p>
+            <input type="checkbox" id="lunch" name="lunch">
+            <label for="lunch">Lunch Included</label><br><br>
+
+            <!-- Submit -->
+            <button type="submit" style="width:100%; padding:10px; background-color:#2196F3; color:white; border:none; border-radius:5px;">
+                Register
+            </button>
+
+        </form>
+    </div>
+
+    <!-- Schedule Section -->
+    <div id="schedule" style="width:80%; margin:40px auto;">
+        <h2 style="text-align:center;">Event Schedule</h2>
+
+        <table border="1" width="100%" cellpadding="10" cellspacing="0">
+            <thead style="background-color:#ddd;">
+                <tr>
+                    <th>Time</th>
+                    <th>Activity</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>09:00 AM</td>
+                    <td>Registration & Welcome</td>
+                </tr>
+                <tr>
+                    <td>10:00 AM</td>
+                    <td>Keynote Speech</td>
+                </tr>
+                <tr>
+                    <td>12:00 PM</td>
+                    <td>Workshop Session</td>
+                </tr>
+                <tr>
+                    <td>02:00 PM</td>
+                    <td>Lunch Break</td>
+                </tr>
+                <tr>
+                    <td>04:00 PM</td>
+                    <td>Closing Ceremony</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

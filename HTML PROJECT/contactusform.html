@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us</title>
+</head>
+
+<body style="font-family: Arial; background-color:#f4f4f4;">
+
+    <!-- Form Container -->
+    <div style="width:400px; margin:50px auto; background:white; padding:20px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.1);">
+
+        <h2 style="text-align:center;">Contact Us</h2>
+
+        <form>
+
+            <!-- Name -->
+            <label for="name">Full Name:</label><br>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required style="width:100%; padding:8px; margin:8px 0;"><br>
+
+            <!-- Email -->
+            <label for="email">Email Address:</label><br>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required style="width:100%; padding:8px; margin:8px 0;"><br>
+
+            <!-- Subject Dropdown -->
+            <label for="subject">Subject:</label><br>
+            <select id="subject" name="subject" required style="width:100%; padding:8px; margin:8px 0;">
+                <option value="">-- Select Subject --</option>
+                <option value="general">General Inquiry</option>
+                <option value="support">Support</option>
+                <option value="feedback">Feedback</option>
+            </select><br>
+
+            <!-- Message -->
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="5" placeholder="Write your message..." required style="width:100%; padding:8px; margin:8px 0;"></textarea><br>
+
+            <!-- Submit Button -->
+            <button type="submit" style="width:100%; padding:10px; background-color:#4CAF50; color:white; border:none; border-radius:5px;">
+                Send Message
+            </button>
+
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Global Hyperimage</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f0f0f0;
+        }
+
+        h1 {
+            margin-top: 20px;
+        }
+
+        .image-link {
+            display: inline-block;
+            margin-top: 20px;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .image-link img {
+            width: 600px;
+            transition: 0.3s;
+            border: 3px solid #333;
+            border-radius: 10px;
+        }
+
+        /* Hover effect */
+        .image-link:hover img {
+            transform: scale(1.05);
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Hyperimage (Global Link)</h1>
+    <p>Click anywhere on the image</p>
+
+    <!-- Entire image is clickable -->
+    <a href="https://www.pexels.com/photo/tropical-beachside-bar-in-punta-cana-33392859/" target="_blank" class="image-link">
+        <img src="https://via.placeholder.com/600x400" alt="Clickable Image">
+    </a>
+
+</body>
+</html>

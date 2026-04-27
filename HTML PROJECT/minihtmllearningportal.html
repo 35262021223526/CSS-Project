@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini HTML Learning Portal</title>
+</head>
+
+<body style="font-family: Arial; margin:0;">
+
+    <!-- Navigation Bar -->
+    <div style="background-color:#333; padding:15px; text-align:center;">
+        <a href="#home" style="color:white; margin:15px;">Home</a>
+        <a href="#lessons" style="color:white; margin:15px;">Lessons</a>
+        <a href="#resources" style="color:white; margin:15px;">Resources</a>
+        <a href="#contact" style="color:white; margin:15px;">Contact</a>
+    </div>
+
+    <!-- Home Section -->
+    <div id="home" style="padding:30px; text-align:center;">
+        <h1>Welcome to HTML Learning Portal</h1>
+        <p>Learn HTML step by step with examples and practice.</p>
+        <img src="https://via.placeholder.com/800x300" alt="Banner" width="80%">
+    </div>
+
+    <!-- Lessons Section -->
+    <div id="lessons" style="padding:30px;">
+        <h2>HTML Lessons</h2>
+        <ol>
+            <li>Introduction to HTML</li>
+            <li>HTML Tags & Elements</li>
+            <li>Text Formatting</li>
+            <li>Links & Images</li>
+            <li>Lists (Ordered & Unordered)</li>
+            <li>Tables</li>
+            <li>Forms & Input Types</li>
+        </ol>
+    </div>
+
+    <!-- Resources Section -->
+    <div id="resources" style="padding:30px;">
+        <h2>Learning Resources</h2>
+
+        <!-- YouTube Video -->
+        <iframe width="560" height="315" 
+            src="https://www.youtube.com/embed/qz0aGYrrlhU" 
+            title="HTML Tutorial"
+            frameborder="0" allowfullscreen>
+        </iframe>
+
+        <p>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">
+                Visit MDN HTML Documentation
+            </a>
+        </p>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact" style="padding:30px; background:#f4f4f4;">
+        <h2>Contact Us</h2>
+
+        <form>
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" required><br><br>
+
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" required><br><br>
+
+            <label for="message">Message:</label><br>
+            <textarea id="message" rows="4" required></textarea><br><br>
+
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+</body>
+</html>
